@@ -77,6 +77,12 @@
     <Compile Include="APO.Designer.cs">
       <DependentUpon>APO.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChooseImg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChooseImg.Designer.cs">
+      <DependentUpon>ChooseImg.cs</DependentUpon>
+    </Compile>
     <Compile Include="DoubleParameterOperations.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     </Compile>
     <EmbeddedResource Include="APO.resx">
       <DependentUpon>APO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChooseImg.resx">
+      <DependentUpon>ChooseImg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DoubleParameterOperations.resx">
       <DependentUpon>DoubleParameterOperations.cs</DependentUpon>

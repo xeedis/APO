@@ -261,19 +261,42 @@ namespace APO
 
         private void aNDToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+           
+            ChooseImg form = new ChooseImg(MdiChildren);
+            form.OnApply += ApplyAndPointOperation;
+            form.ShowDialog();
+            
         }
-
+        private void ApplyAndPointOperation(int x)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.AND(((Picture)MdiChildren[x]).bitmap);
+        }
         private void oRToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ChooseImg form = new ChooseImg(MdiChildren);
+            form.OnApply += ApplyOrPointOperation;
+            form.ShowDialog();
         }
-
+        private void ApplyOrPointOperation(int x)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.OR(((Picture)MdiChildren[x]).bitmap);
+        }
         private void xORToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ChooseImg form = new ChooseImg(MdiChildren);
+            form.OnApply += ApplyXorPointOperation;
+            form.ShowDialog();
         }
-
+        private void ApplyXorPointOperation(int x)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.XOR(((Picture)MdiChildren[x]).bitmap);
+        }
         private void medianFiltrationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -292,6 +315,199 @@ namespace APO
             Picture activeForm = (Picture)ActiveMdiChild;
             if (activeForm != null)
                 activeForm.medianFiltration(x);
+            activeForm.Show();
+        }
+
+        private void aDDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChooseImg form = new ChooseImg(MdiChildren);
+            form.OnApply += ApplyAddPointOperation;
+            form.ShowDialog();
+        }
+
+        private void ApplyAddPointOperation(int x)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.ADD(((Picture)MdiChildren[x]).bitmap);
+            activeForm.Show();
+        }
+
+        private void minusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChooseImg form = new ChooseImg(MdiChildren);
+            form.OnApply += ApplyMinusPointOperation;
+            form.ShowDialog();
+        }
+
+        private void ApplyMinusPointOperation(int x)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.MINUS(((Picture)MdiChildren[x]).bitmap);
+            activeForm.Show();  
+        }
+
+        private void Erosion4connectedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.Erosion(4);
+            activeForm.Show();
+        }
+
+        private void Erosion8connectedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.Erosion(8);
+            activeForm.Show();
+        }
+
+        private void Dilation4connectedToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.Dilation(4);
+            activeForm.Show();
+        }
+
+        private void Dilation8connectedToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.Dilation(8);
+            activeForm.Show();
+        }
+
+        private void Opening4connectedToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+            {
+                activeForm.Erosion(4);
+                activeForm.Dilation(4);
+            }  
+            activeForm.Show();
+        }
+
+        private void Opening8connectedToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+            {
+                activeForm.Erosion(8);
+                activeForm.Dilation(8);
+            }
+            activeForm.Show();
+        }
+
+        private void Closing4connectedToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+            {
+                activeForm.Dilation(4);
+                activeForm.Erosion(4);
+            }
+            activeForm.Show();
+        }
+
+        private void Closing8connectedToolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+            {
+                activeForm.Dilation(8);
+                activeForm.Erosion(8);
+            }
+            activeForm.Show();
+        }
+
+        private void gaussianBlurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.GaussianBlur(3, 3);
+            
+            activeForm.Show();
+        }
+
+        private void skeletonizationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.Skeletonization();
+
+            activeForm.Show();
+        }
+
+        private void segmentationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.Segmentation();
+
+            activeForm.Show();
+        }
+
+        private void watershedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.Watershed();
+
+            activeForm.Show();
+        }
+
+        private void sobelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.sobel();
+
+            activeForm.Show();
+        }
+
+        private void laplacianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.laplacian();
+
+            activeForm.Show();
+        }
+
+        private void cannyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.Canny();
+
+            activeForm.Show();
+            
+        }
+
+        private void egzToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void erosionToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.ErosionEgz();
+
+            activeForm.Show();
+        }
+
+        private void dilationToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Picture activeForm = (Picture)ActiveMdiChild;
+            if (activeForm != null)
+                activeForm.DilationEgz();
+
             activeForm.Show();
         }
     }
